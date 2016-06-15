@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -23,11 +24,24 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>vaadin-addons</id>
+            <url>http://maven.vaadin.com/vaadin-addons</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
             <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.vaadin.teemu</groupId>
+            <artifactId>switch</artifactId>
+            <version>2.0.3</version>
         </dependency>
 
         <dependency>
@@ -56,11 +70,13 @@
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                <filesets>
-                    <fileset>
-                        <directory>${basedir}/src/main/resources/VAADIN/widgetsets</directory>
-                    </fileset>
-                </filesets>
+                    <filesets>
+                        <fileset>
+                            <directory>
+                                ${basedir}/src/main/resources/VAADIN/widgetsets
+                            </directory>
+                        </fileset>
+                    </filesets>
                 </configuration>
             </plugin>
             <plugin>
@@ -72,9 +88,14 @@
                 <artifactId>vaadin-maven-plugin</artifactId>
                 <configuration>
                     <extraJvmArgs>-Xmx2G -Xss1024k</extraJvmArgs>
-                    <webappDirectory>${basedir}/src/main/resources/VAADIN/widgetsets</webappDirectory>
-                    <hostedWebapp>${basedir}/src/main/resources/VAADIN/widgetsets</hostedWebapp>
-                    <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
+                    <webappDirectory>
+                        ${basedir}/src/main/resources/VAADIN/widgetsets
+                    </webappDirectory>
+                    <hostedWebapp>
+                        ${basedir}/src/main/resources/VAADIN/widgetsets
+                    </hostedWebapp>
+                    <persistentunitcachedir>${project.build.directory}
+                    </persistentunitcachedir>
                     <deploy>${project.build.directory}/gwt-deploy</deploy>
                     <compileReport>false</compileReport>
                     <noServer>true</noServer>

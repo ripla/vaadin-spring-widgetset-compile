@@ -73,8 +73,12 @@
                     <filesets>
                         <fileset>
                             <directory>
-                                ${basedir}/src/main/resources/VAADIN/widgetsets
+                                ${basedir}/src/main/resources/VAADIN/
                             </directory>
+                            <includes>
+                                <include>widgetsets/**/*</include>
+                                <include>themes/**/*.css</include>
+                            </includes>
                         </fileset>
                     </filesets>
                 </configuration>
@@ -91,9 +95,10 @@
                     <webappDirectory>
                         ${basedir}/src/main/resources/VAADIN/widgetsets
                     </webappDirectory>
-                    <hostedWebapp>
+   <!--                 <hostedWebapp>
                         ${basedir}/src/main/resources/VAADIN/widgetsets
-                    </hostedWebapp>
+                    </hostedWebapp>-->
+                    <warSourceDirectory>${basedir}/src/main/resources</warSourceDirectory>
                     <persistentunitcachedir>${project.build.directory}
                     </persistentunitcachedir>
                     <deploy>${project.build.directory}/gwt-deploy</deploy>
@@ -108,9 +113,9 @@
                     <execution>
                         <goals>
                             <goal>resources</goal>
-                            <!-- <goal>update-theme</goal> -->
+                            <goal>update-theme</goal>
                             <goal>update-widgetset</goal>
-                            <!-- <goal>compile-theme</goal> -->
+                            <goal>compile-theme</goal>
                             <goal>compile</goal>
                         </goals>
                     </execution>
